@@ -15,7 +15,7 @@ import re
 class DmozSpider(scrapy.Spider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
-    start_urls = ['http://jmjh.miit.gov.cn/newsInfoWebMessage.action?newsId=12829692&moduleId=1062']
+    start_urls = ['http://jmjh.miit.gov.cn/newsInfoWebMessage.action?newsId=10744349&moduleId=1062']
     #start_urls.append(rule_dict['url'])
     
     def parse(self, response):

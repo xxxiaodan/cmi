@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import random
 import base64
-# import requests
+import requests
 
 
 class CustomUserAgentsMiddleware(object):
@@ -165,9 +165,11 @@ PROXIES_S = [
 
 
 def judge_activate(http_url):
-    while 1:
+    count = 0
+    while count<10:
         if http_url.startswith("http://"):
             proxy = random.choice(PROXIES)
+            print(http_url)
         else:
             proxy = random.choice(PROXIES_S)
         proxy_dict={}
@@ -177,9 +179,11 @@ def judge_activate(http_url):
             code = response.status_code
             if 200 <= code < 300:
                 print "activate code:%d url: %s " % (code, http_url)
-                return proxy
+                #return proxy
             else:
                 print("invalid ip and port")
         except:
             print('invalid ip and port')
-
+        count += 1
+#test_url = 'http://jmjh.miit.gov.cn/newsInfoWebMessage.action?newsId=10744349&moduleId=1062'
+# print judge_activate(test_url)
