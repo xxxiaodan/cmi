@@ -22,14 +22,14 @@ class DmozSpider(scrapy.Spider):
         #print response.body //*[@class='info900']/div[@class
         # ='probox']/h1/text() //*[@id="content"]
         
-        public_time_target = response.xpath('//*[@id="con_time"]').extract()
-        print public_time_target[0]
-        content_target = str(response.xpath('//*[@id="con_con"]').extract())
+        public_time_target = response.xpath('//*[@id="con_time"]').extract()[0]
+        print public_time_target
+        content_target = str(response.xpath('//*[@id="con_con"]').extract()[0])
         print content_target
-        title_target = response.xpath('//*[@id="con_t"]').extract()
-        print title_target[0]
-        author_target = response.xpath('').extract()
-        print author_target[0]
+        title_target = response.xpath('//*[@id="con_t"]').extract()[0]
+        print title_target
+        author_target = response.xpath('').extract()[0]
+        print author_target
         '''
         site_list_target = '//*[@id="comp_29"]'
         # site_url_filter = '^/n\d+/c\d+/content.html$'
