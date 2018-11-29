@@ -15,8 +15,6 @@ class IsearchSpider(scrapy.Spider):
     #提取的url计数
     url_count=0
 
-
-
     def __init__(self):
         self.start_urls=[]
         self.rules =[]
@@ -56,54 +54,54 @@ class IsearchSpider(scrapy.Spider):
         result_list=[]
         link_pattern=re.compile("href=\"(.+?)\"") #构造正则表达式提取文本中的url
         if page_info['section_list_target'] is not None and page_info['section_url_filter'] is not None:
-           html_string=str(response.xpath(page_info['section_list_target']).extract()) #xpath抽取指定块中的html文本的url
-           #判定块中的文本是否为空
-           if html_string == None or html_string=='':
-               logging.log(logging.WARNING,'The LinkExtract of html string is empty：'+ page_info['site_list_target'])
-               return
-           else:
-               url_list=link_pattern.findall(html_string)
-               #判定抽取出的link长度
-               if len(url_list)<=0:
-                   logging.log(logging.WARNING,'The LinkExtract of list is empty：'+ page_info['site_list_target'])
-                   return
-               else:
-                   url_filter=re.compile(page_info['section_url_filter'])
-                   for i in range(len(url_list)):
-                      match=url_filter.match(url_list[i])
-                      if match is not None:
-                          url=url_list[i]
-                          if url.startswith("/"):
-                              url=page_info['site_url']+url[1:]
-
-                          elif url.startswith("."):
-                              for i in range(len(url)):
-                                  if url[i].isalpha() or url[i].isdigit():
-                                      url=page_info['site_url']+url[i:]
-                                      break
-                          elif (url[0].isalpha() or url[i].isdigit()) and (not url.startswith("http")):
-                              url=page_info['site_url']+url
-                          url = re.sub(r'&amp;', '&', url) #消除某些网站添加&amp;的扒机制 
-                          result_list.append(url)
-                   return result_list
+            html_string=str(response.xpath(page_info['section_list_target']).extract()) #xpath抽取指定块中的html文本的url
+            #判定块中的文本是否为空
+            if html_string == None or html_string == '':
+                logging.log(logging.WARNING,'The LinkExtract of html string is empty：'+ page_info['site_list_target'])
+                return
+            else:
+                url_list=link_pattern.findall(html_string)
+                # 判定抽取出的link长度
+                if len(url_list) <= 0:
+                    logging.log(logging.WARNING, 'The LinkExtract of list is empty：'+ page_info['site_list_target'])
+                    return
+                else:
+                    url_filter=re.compile(page_info['section_url_filter'])
+                    for i in range(len(url_list)):
+                        match=url_filter.match(url_list[i])
+                        if match is not None:
+                            url=url_list[i]
+                            if url.startswith("/"):
+                                url=page_info['site_url']+url[1:]
+                            elif url.startswith("."):
+                                for i in range(len(url)):
+                                    if url[i].isalpha() or url[i].isdigit():
+                                        url=page_info['site_url']+url[i:]
+                                        break
+                            elif (url[0].isalpha() or url[i].isdigit()) and (not url.startswith("http")):
+                                url = page_info['site_url']+url
+                            url = re.sub(r'&amp;', '&', url) #消除某些网站添加&amp;的扒机制
+                            print url
+                            result_list.append(url)
+                    return result_list
 
         else:
-            logging.log(logging.WARNING,'The LinkExtract of rule or filter is empty：'+ page_info['site_url'])
+            logging.log(logging.WARNING, 'The LinkExtract of rule or filter is empty：'+page_info['site_url'])
             return
 
 
 
     def queue_urls(self,url_list,page_info):
-        extract_page_info={}
+        extract_page_info = {}
         for url in url_list:
-	   # print page_info
+            # print page_info
             extract_page_info['url']=url
             extract_page_info['site_name']=page_info['site_name']
             extract_page_info['section_name']=page_info['section_name']
             extract_page_info['public_time_target']=page_info['section_public_time_target']
             extract_page_info['content_target']=page_info['section_content_target']
             extract_page_info['title_target']=page_info['section_title_target']
-	    extract_page_info['author_target']=page_info['section_author_target']
+            extract_page_info['author_target']=page_info['section_author_target']
             extract_page_info['code']=page_info['code']
             extract_page_info['site_type']=page_info['site_type']
             self.redisUrl.put(extract_page_info)
@@ -115,7 +113,7 @@ class IsearchSpider(scrapy.Spider):
         #print('source headers:'+str(headers))
         sourceCode=siteCode
         if hasattr(response, 'encoding'):
-            sourceCode=response.encoding
+            sourceCode = response.encoding
         tempBody=response.body
         end1=tempBody.find('<body')
         end2=tempBody.find('<BODY')

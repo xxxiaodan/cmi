@@ -13,16 +13,19 @@
 REDIS_HOST = '192.168.0.60'
 REDIS_PORT = 6379
 REDIS_PASS = 'cs.Swust'
-REDIS_DB = 1
-# mogodb
+# DB 1 为正在运行 ，0 为测试
+#REDIS_DB = 1
+REDIS_DB = 0
+
+# mogodb 运行配置
 MONGODB_SERVER = '192.168.0.60'
 MONGODB_PORT = 27017
-MONGODB_DB = 'cmi'
-# MONGODB_USER = 'root'
-# MONGODB_PASS = 'cs.swust'
+# 运行DB 为cmi 测试数据库名为test
+#MONGODB_DB = 'cmi'
+MONGODB_DB = 'test_cmi'
 MONGODB_USER = 'dkelab'
 MONGODB_PASS = 'Cs.swust_60'
-# MONGODB_COLLECTION = 'isearch5' #mongoDB集合类似于表
+
 # -----------------------------------------------------end---------------------------------------------------------
 
 

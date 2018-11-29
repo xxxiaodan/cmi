@@ -8,37 +8,35 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+# -------------------------------------------------user parameter set----------------------------------------------------
+# 初始url种子
+start_urls = []
+# 初始抽取规则
+start_rule = []
+# 爬虫的唯一ID,用于爬取的网站分配便于扩展
+# ID 1 为正在运行id ，0 为测试爬虫id
+#MY_CRAWLER_ID = 1
+MY_CRAWLER_ID = 0
 
-
-#-------------------------------------------------user parameter set----------------------------------------------------
-#初始url种子
-start_urls=[]
-#初始抽取规则
-start_rule=[]
-#爬虫的唯一ID,用于爬取的网站分配便于扩展
-MY_CRAWLER_ID=1
-
-#Mysql config
+# Mysql config
 DB_HOST ='192.168.0.60'
-DB_PORT=3306
-DB_USER='root'
-#DB_PASSWORD='cs.swust'
+DB_PORT = 3306
+DB_USER = 'root'
+# DB_PASSWORD='cs.swust'
 DB_PASSWORD = 'Cs.swust123'
-DB_NAME='cmi'
-DB_CHARSET='UTF8'
+DB_NAME = 'cmi'
+DB_CHARSET = 'UTF8'
 
-#Redis config
-REDIS_HOST='192.168.0.60'
-REDIS_PORT=6379
-REDIS_PASS='cs.Swust'
-REDIS_DB=1
-#---------------------------------------------------end---------------------------------------------------------
+# Redis config
+REDIS_HOST = '192.168.0.60'
+REDIS_PORT = 6379
+REDIS_PASS = 'cs.Swust'
+# DB 1 为正在运行 ，0 为测试
+#REDIS_DB = 1
+REDIS_DB = 0
+# ---------------------------------------------------end---------------------------------------------------------
 
-
-
-
-
-#-------------------------------------------------system parameter set------------------------------------------
+# -------------------------------------------------system parameter set------------------------------------------
 
 BOT_NAME = 'url_crawler'
 SPIDER_MODULES = ['url_crawler.spiders']
@@ -51,13 +49,13 @@ DOWNLOADER_MIDDLEWARES = {
 
 
 DOWNLOAD_TIMEOUT = 60
-DUPEFILTER_DEBUG= True
+DUPEFILTER_DEBUG = True
 #重定向最大次数
 REDIRECT_MAX_TIMES = 2
 REDIRECT_ENABLED = True
-COOKIES_ENABLED=False
-DOWNLOAD_DELAY=0.25
-MYEXT_ENABLED=True
+COOKIES_ENABLED = False
+DOWNLOAD_DELAY = 0.25
+MYEXT_ENABLED = True
 #-----------------------------------------------------end---------------------------------------------------------
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'url_crawler (+http://www.yourdomain.com)'
@@ -70,8 +68,8 @@ MYEXT_ENABLED=True
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN=16
-CONCURRENT_REQUESTS_PER_IP=16
+CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED=False
