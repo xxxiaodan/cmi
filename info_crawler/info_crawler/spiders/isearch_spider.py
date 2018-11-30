@@ -118,7 +118,7 @@ class IsearchSpider(scrapy.Spider):
         if page['content'] is None or page['content'] == '':
             page['content'] = str(tool.ISearchTools.extractHtmlText(response.body))
         # 标签清洗
-        page['content'] = tool.ISearchTools.extractHtmlText(page['content']).replace(' ', '')
+        # page['content'] = tool.ISearchTools.extractHtmlText(page['content']).replace(' ', '')
         # print(len(page['content']))
         # 抽取发布时间
         try:
