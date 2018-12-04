@@ -10,8 +10,8 @@ dec:数据库操作类
 """
 config是系统的全局参数
 """
-import MySQLdb
-from MySQLdb.cursors import DictCursor
+import pymysql
+from pymysql.cursors import DictCursor
 from DBUtils.PooledDB import PooledDB
 import url_crawler.settings as settings
 
@@ -38,7 +38,7 @@ class MysqlUtil(object):
         @return MySQLdb.connection
         """
         if cls.__pool is None:
-            cls.__pool = PooledDB(creator=MySQLdb, mincached=5 , maxcached=100 ,
+            cls.__pool = PooledDB(creator=pymysql, mincached=5 , maxcached=100 ,
                               host=settings.DB_HOST , port=int(settings.DB_PORT) ,  # @UndefinedVariable,actually defined
                               user=settings.DB_USER , passwd=settings.DB_PASSWORD ,  # @UndefinedVariable
                               db=settings.DB_NAME,use_unicode=False,  # @UndefinedVariable
