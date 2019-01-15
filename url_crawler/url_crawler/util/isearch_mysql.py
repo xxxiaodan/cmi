@@ -38,9 +38,9 @@ class MysqlUtil(object):
         @return MySQLdb.connection
         """
         if cls.__pool is None:
-            cls.__pool = PooledDB(creator=pymysql, mincached=5 , maxcached=100 ,
-                              host=settings.DB_HOST , port=int(settings.DB_PORT) ,  # @UndefinedVariable,actually defined
-                              user=settings.DB_USER , passwd=settings.DB_PASSWORD ,  # @UndefinedVariable
+            cls.__pool = PooledDB(creator=pymysql, mincached=5, maxcached=100 ,
+                              host=settings.DB_HOST, port=int(settings.DB_PORT) ,  # @UndefinedVariable,actually defined
+                              user=settings.DB_USER, passwd=settings.DB_PASSWORD ,  # @UndefinedVariable
                               db=settings.DB_NAME,use_unicode=False,  # @UndefinedVariable
                               charset=settings.DB_CHARSET,cursorclass=DictCursor)  # @UndefinedVariable
         return cls.__pool.connection()

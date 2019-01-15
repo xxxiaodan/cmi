@@ -16,24 +16,23 @@ start_rule = []
 # 爬虫的唯一ID,用于爬取的网站分配便于扩展
 # ID 1 为正在运行id ，0 为测试爬虫id
 #MY_CRAWLER_ID = 1
-MY_CRAWLER_ID = 0
+MY_CRAWLER_ID = 1
 
 # Mysql config
-DB_HOST ='192.168.0.60'
+DB_HOST ='rm-wz9949ft8e8iy626kfo.mysql.rds.aliyuncs.com'
 DB_PORT = 3306
 DB_USER = 'root'
-# DB_PASSWORD='cs.swust'
-DB_PASSWORD = 'Cs.swust123'
+DB_PASSWORD = 'Xxb13981101105'
 DB_NAME = 'cmi'
 DB_CHARSET = 'UTF8'
 
 # Redis config
-REDIS_HOST = '192.168.0.60'
+REDIS_HOST = '47.112.19.70'
 REDIS_PORT = 6379
 REDIS_PASS = 'cs.Swust'
 # DB 1 为正在运行 ，0 为测试
 #REDIS_DB = 1
-REDIS_DB = 0
+REDIS_DB = 2
 # ---------------------------------------------------end---------------------------------------------------------
 
 # -------------------------------------------------system parameter set------------------------------------------

@@ -81,7 +81,7 @@ class IsearchSpider(scrapy.Spider):
                             elif (url[0].isalpha() or url[i].isdigit()) and (not url.startswith("http")):
                                 url = page_info['site_url']+url
                             url = re.sub(r'&amp;', '&', url) #消除某些网站添加&amp;的扒机制
-                            print url
+                            logging.log(logging.INFO,"Get url:"+url)
                             result_list.append(url)
                     return result_list
 
